@@ -1,0 +1,8 @@
+{
+  "name": "ibugg03",
+  "app_id": "4bdc9e9d",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
