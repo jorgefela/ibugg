@@ -44,6 +44,22 @@
 
   <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $(document).on('change', '.input', function(){
+      var val = $(this).val();
+
+      if(val.length > 0){
+        if(!$(this).hasClass('no-empty')){
+          $(this).addClass('no-empty');
+        }
+      }else{
+        if($(this).hasClass('no-empty')){
+          $(this).removeClass('no-empty');
+        }
+      }
+    });
+  </script>
 
 </body>
 </html>

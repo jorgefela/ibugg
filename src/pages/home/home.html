@@ -1,18 +1,34 @@
-<ion-header>
+<ion-header class="header-app">
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title><img src="assets/imgs/white-logo-horz.png" alt="Ibugg " class="header-logo"></ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+<ion-content padding class="content-app-body">
+  <ion-list *ngFor="let s of stats" class="dashboard">
+    <div class="dashboard-item {{(s.type == 'fb') ? 'dashboard-item-facebook' : ''}}">
+        <h1>{{s.total}}</h1>
+        <p>{{s.name}}</p>
+    </div>
+  </ion-list>
+  <div class="last-contacts">
+    <h1 class="font-family-lato font-weight-normal font-size-30">Last Ten</h1>
+    <input id="toggle-collapse" type="checkbox">
+    <ion-list class="list-contacts expand-element">
+      <ion-item *ngFor="let c of lastTen" class="list-contacts-item">
+        <ion-avatar item-start class="list-contacts-items">
+          <img src="http://ibugg2.vmcgraphics.com/images/profile/{{(c.photo != '') ? c.photo : 'default.jpg'}}">
+        </ion-avatar>
+        <div class="list-contacts-items list-contacts-item-content">
+          <h1>{{c.name}} {{c.lname}}</h1>
+          <p>{{c.email}}</p>
+        </div>
+        <button ion-button outline item-end class="list-contacts-items"><ion-icon name="more"></ion-icon></button>
+      </ion-item>
+    </ion-list>
+    <label class="label-collapse" for="toggle-collapse" ng-If="c.lenght > 5">Show more</label>
+  </div>
 </ion-content>
