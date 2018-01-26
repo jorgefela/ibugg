@@ -1,7 +1,7 @@
 // import { HttpClient } from '@angular/common/http';
 import { LoadingController, Loading, Events } from 'ionic-angular';
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { GetDataProvider } from '../../providers/get-data/get-data';
