@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+// import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { ContactsPage } from '../pages/contacts/contacts';
 import { FavoritesPage } from '../pages/favorites/favorites';
@@ -23,9 +23,35 @@ export class MyApp {
   rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any, icon: string}>;
+  userInfo = [];
+  place: string = '';
+  userid:any = '0';
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private getDataService: GetDataProvider, private auth: AuthServiceProvider) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private getDataService: GetDataProvider, private auth: AuthServiceProvider, public events: Events, private storage : Storage) {
     this.initializeApp();
+
+    let info:any;
+    this.storage.get('userid').then((val) => {
+      // info = val;
+      if(val != undefined){
+        // console.log(val);
+        info = [{
+          auth : true,
+          userid : val
+        }];
+      }else{
+        info = this.auth.getUserInfo();
+      }
+
+      if(info != undefined && info[0]['auth'] == true){
+        this.getUser(info[0]['userid']);
+        // console.log(info[0]['userid']);
+      }else{
+        events.subscribe('user:created', (user, time) => {
+          this.getUser(user);
+        });
+      }
+    });
 
     // used for an example of ngFor and navigation
     this.pages = [
@@ -43,6 +69,27 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  getUser(userid){
+    // if(userid != undefined){
+      // console.log(userid);
+      this.getDataService.getData('http://ibugg2.vmcgraphics.com/api/users/?id='+userid).subscribe(
+        data => {
+          this.userInfo = data;
+
+          if(this.userInfo[0].city != '' && this.userInfo[0].country != ''){
+            this.place = this.userInfo[0].city+', '+this.userInfo[0].country;
+          }else if(this.userInfo[0].city != '' && this.userInfo[0].country == ''){
+            this.place = this.userInfo[0].city;
+          }else if(this.userInfo[0].country != '' && this.userInfo[0].city == ''){
+            this.place = this.userInfo[0].country;
+          }else{
+            this.place = this.userInfo[0].username;
+          }
+        }
+      );
+    // }
   }
 
   openPage(page) {

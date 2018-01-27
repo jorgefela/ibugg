@@ -15,5 +15,30 @@
 
 
 <ion-content padding>
-	<h1>CONTACTS</h1>
+  <div class="last-contacts">
+    <h1 class="font-family-lato font-weight-normal font-size-30">Contacts</h1>
+    <ion-list class="list-contacts">
+      <ion-item *ngFor="let c of contacts" class="list-contacts-item" #contacts>
+        <ion-avatar item-start class="list-contacts-items">
+          <img src="assets/imgs/profile/{{(c.photo != '') ? c.photo : 'default.jpg'}}">
+        </ion-avatar>
+        <div class="list-contacts-items list-contacts-item-content" item-content>
+          <h1>{{c.name}} {{c.lname}}</h1>
+          <p>{{c.email}}</p>
+        </div>
+        <div class="list-contacts-items list-contacts-item-functions" item-content>
+          <button ion-button clear class="change-favorite" data-column="favorite" data-value="0" *ngIf="c.favorite == 1">
+            <input type="hidden" name="id" value="{{c.id}}">
+            <i class="fa fa-heart" aria-hidden="true"></i>
+          </button>
+          <button ion-button clear class="change-favorite" data-column="favorite" data-value="1" *ngIf="c.favorite == 0">
+            <input type="hidden" name="id" value="{{c.id}}">
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+          </button>
+        </div>
+        <!-- <button ion-button outline item-end class="list-contacts-items" (click)="this.editContact(c.id)"}><ion-icon name="more"></ion-icon></button> -->
+        <button ion-button outline item-end class="list-contacts-items"><ion-icon name="more"></ion-icon></button>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
