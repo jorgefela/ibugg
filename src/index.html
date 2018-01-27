@@ -9,6 +9,8 @@
 
   <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
   <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.min.css">
+
   <meta name="theme-color" content="#4e8ef7">
 
   <!-- add to homescreen for ios -->
@@ -39,13 +41,13 @@
   <script src="build/polyfills.js"></script>
 
   <!-- The vendor js is generated during the build process
-       It contains all of the dependencies in node_modules -->
-  <script src="build/vendor.js"></script>
+   It contains all of the dependencies in node_modules -->
+   <script src="build/vendor.js"></script>
 
-  <!-- The main bundle js is generated during the build process -->
-  <script src="build/main.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script>
+   <!-- The main bundle js is generated during the build process -->
+   <script src="build/main.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script>
     $(document).on('change', '.input', function(){
       var val = $(this).val();
 
@@ -58,6 +60,51 @@
           $(this).removeClass('no-empty');
         }
       }
+    });
+    $(document).on('click', '.change-favorite', function(){
+      var id = $(this).find('input[name=id]').val(),
+      column = $(this).data('column'),
+      value = $(this).data('value'),
+      $this = $(this);
+
+      // console.log($(this).attr('data-id'));
+
+      $.ajax({
+        url : 'http://ibugg2.vmcgraphics.com/api/contacts/update/',
+        type: 'get',
+        data: {'id' : id, 'column' : column, 'value' : value},
+        success: function(result){
+          result = JSON.parse(result);
+          if(result.status == true){
+            console.log(result);
+
+            if(result.value == '0'){
+              $($this).data('value', 1);
+
+              if($($this).find('.fa').hasClass('fa-heart')){
+                $($this).find('.fa').removeClass('fa-heart');
+              }
+
+              if(!$($this).find('.fa').hasClass('fa-heart-o')){
+                $($this).find('.fa').addClass('fa-heart-o');
+              }
+            }else if(result.value == '1'){
+              $($this).data('value', 0);
+
+              if($($this).find('.fa').hasClass('fa-heart-o')){
+                $($this).find('.fa').removeClass('fa-heart-o');
+              }
+
+              if(!$($this).find('.fa').hasClass('fa-heart')){
+                $($this).find('.fa').addClass('fa-heart');
+              }
+            }
+
+          }else{
+
+          }
+        }
+      });
     });
   </script>
 
