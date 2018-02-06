@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
 import { GetDataProvider } from '../../providers/get-data/get-data';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { EditContactsPage } from '../edit-contacts/edit-contacts';
+import { NewContactPage } from '../new-contact/new-contact';
 
 import { Storage } from '@ionic/storage';
 
@@ -70,7 +72,8 @@ import { Storage } from '@ionic/storage';
  	}
 
  	public editContact(id){
-        this.events.publish('user:edit', data['userid'], Date.now());
-        this.navCtrl.setRoot('EditContactPage');
+       	this.storage.set('edit-id', id);
+        this.navCtrl.setRoot('EditContactsPage');
+
  	}
  }
