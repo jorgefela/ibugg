@@ -5,13 +5,15 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { ContactsPage } from '../pages/contacts/contacts';
+// import { ContactsPage } from '../pages/contacts/contacts';
+import { ContactsPageModule } from '../pages/contacts/contacts.module';
 import { FavoritesPage } from '../pages/favorites/favorites';
 // import { LoginPage } from '../pages/login/login';
 import { LoginPageModule } from '../pages/login/login.module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { HttpModule } from '@angular/http';
 import { GetDataProvider } from '../providers/get-data/get-data';
@@ -24,7 +26,7 @@ import { IonicStorageModule } from '@ionic/storage';
     MyApp,
     HomePage,
     ListPage,
-    ContactsPage,
+    // ContactsPage,
     FavoritesPage,
     // LoginPage
   ],
@@ -33,6 +35,7 @@ import { IonicStorageModule } from '@ionic/storage';
     IonicModule.forRoot(MyApp),
     HttpModule,
     LoginPageModule,
+    ContactsPageModule,
     IonicStorageModule.forRoot({
       name: '__mydb',
          driverOrder: ['indexeddb', 'sqlite', 'websql']
@@ -43,7 +46,7 @@ import { IonicStorageModule } from '@ionic/storage';
     MyApp,
     HomePage,
     ListPage,
-    ContactsPage,
+    // ContactsPage,
     FavoritesPage,
     // LoginPage
   ],
@@ -52,7 +55,8 @@ import { IonicStorageModule } from '@ionic/storage';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GetDataProvider,
-    AuthServiceProvider
+    AuthServiceProvider,
+    Camera
   ]
 })
 export class AppModule {}

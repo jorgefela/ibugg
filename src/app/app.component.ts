@@ -13,6 +13,7 @@ import { GetDataProvider } from '../providers/get-data/get-data';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 import { Storage } from '@ionic/storage';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,7 +28,7 @@ export class MyApp {
   place: string = '';
   userid:any = '0';
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private getDataService: GetDataProvider, private auth: AuthServiceProvider, public events: Events, private storage : Storage) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private getDataService: GetDataProvider, private auth: AuthServiceProvider, public events: Events, private storage : Storage, private camera: Camera) {
     this.initializeApp();
 
     let info:any;
@@ -103,5 +104,21 @@ export class MyApp {
       this.nav.setRoot('LoginPage')
     });
   }
+
+  // const options: CameraOptions = {
+  //   quality: 100,
+  //   destinationType: this.camera.DestinationType.DATA_URL,
+  //   encodingType: this.camera.EncodingType.JPEG,
+  //   mediaType: this.camera.MediaType.PICTURE
+  // }
+
+  // this.camera.getPicture(options).then((imageData) => {
+  //  // imageData is either a base64 encoded string or a file URI
+  //  // If it's base64:
+  //  let base64Image = 'data:image/jpeg;base64,' + imageData;
+   
+  // }, (err) => {
+  //  // Handle error
+  // });
 
 }
