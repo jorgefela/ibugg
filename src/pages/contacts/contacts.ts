@@ -9,6 +9,9 @@ import { NewContactPage } from '../new-contact/new-contact';
 =======
 >>>>>>> master
 
+import { EditContactsPage } from '../edit-contacts/edit-contacts';
+import { NewContactPage } from '../new-contact/new-contact';
+
 import { Storage } from '@ionic/storage';
 
 /**
@@ -98,8 +101,13 @@ import { Storage } from '@ionic/storage';
  	}
 
  	public editContact(id){
+<<<<<<< HEAD
         this.events.publish('user:edit', id, Date.now());
         this.navCtrl.setRoot('EditContactPage');
+>>>>>>> master
+=======
+       	this.storage.set('edit-id', id);
+        this.navCtrl.setRoot('EditContactsPage');
 >>>>>>> master
  	}
  }

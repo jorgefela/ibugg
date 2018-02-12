@@ -29,9 +29,13 @@ export class MyApp {
   userid:any = '0';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private getDataService: GetDataProvider, private auth: AuthServiceProvider, public events: Events, private storage : Storage, private camera: Camera) {
 =======
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private getDataService: GetDataProvider, private auth: AuthServiceProvider, public events: Events, private storage : Storage) {
+>>>>>>> master
+=======
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private getDataService: GetDataProvider, private auth: AuthServiceProvider, public events: Events, private storage : Storage, private camera: Camera) {
 >>>>>>> master
     this.initializeApp();
 
