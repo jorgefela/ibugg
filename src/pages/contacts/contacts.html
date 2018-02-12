@@ -43,11 +43,14 @@
 <ion-content padding>
   <div class="last-contacts">
     <h1 class="font-family-lato font-weight-normal font-size-30">Contacts</h1>
+<<<<<<< HEAD
     <!-- <a href="http://ibugg2.vmcgraphics.com/contacts/new" class="btn btn-success d-inline-block"><i class="fa fa-plus-circle" aria-hidden="true"></i> New Contact</a> -->
     <!-- <button ion-button outline item-end ><i class="fa fa-plus-circle" aria-hidden="true"></i> New Contact</button> -->
     <ion-fab bottom right>
       <button ion-fab color="primary" (click)="this.navCtrl.setRoot('NewContactPage')">+</button>
     </ion-fab>
+=======
+>>>>>>> master
     <ion-list class="list-contacts">
       <ion-item *ngFor="let c of contacts" class="list-contacts-item" #contacts>
         <ion-avatar item-start class="list-contacts-items">
@@ -67,8 +70,13 @@
             <i class="fa fa-heart-o" aria-hidden="true"></i>
           </button>
         </div>
+<<<<<<< HEAD
         <button ion-button outline item-end class="list-contacts-items" (click)="this.editContact(c.id)"><ion-icon name="more"></ion-icon></button>
         <!-- <button ion-button outline item-end class="list-contacts-items"><ion-icon name="more"></ion-icon></button> -->
+=======
+        <!-- <button ion-button outline item-end class="list-contacts-items" (click)="this.editContact(c.id)"}><ion-icon name="more"></ion-icon></button> -->
+        <button ion-button outline item-end class="list-contacts-items"><ion-icon name="more"></ion-icon></button>
+>>>>>>> master
       </ion-item>
     </ion-list>
   </div>

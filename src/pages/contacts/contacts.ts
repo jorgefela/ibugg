@@ -3,8 +3,11 @@ import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
 import { GetDataProvider } from '../../providers/get-data/get-data';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+<<<<<<< HEAD
 import { EditContactsPage } from '../edit-contacts/edit-contacts';
 import { NewContactPage } from '../new-contact/new-contact';
+=======
+>>>>>>> master
 
 import { Storage } from '@ionic/storage';
 
@@ -54,6 +57,7 @@ import { Storage } from '@ionic/storage';
 			}
 		});
  	}
+<<<<<<< HEAD
 
  	getContacts(userid){
  		this.getDataService.getData('http://ibugg2.vmcgraphics.com/api/contacts/?userid='+userid+'&status=1').subscribe(
@@ -75,5 +79,27 @@ import { Storage } from '@ionic/storage';
        	this.storage.set('edit-id', id);
         this.navCtrl.setRoot('EditContactsPage');
 
+=======
+
+ 	getContacts(userid){
+ 		this.getDataService.getData('http://ibugg2.vmcgraphics.com/api/contacts/?userid='+userid+'&status=1').subscribe(
+ 			data => this.contacts = data
+ 			);
+ 	}
+
+ 	changeStatus(id, column, value){
+ 		this.getDataService.getData('http://ibugg2.vmcgraphics.com/api/contacts/update/?id='+id+'&column='+column+'&value='+value+'').subscribe(
+ 			data => {
+ 				if(data.status == true){
+ 					this.navCtrl.setRoot(this.navCtrl.getActive().component);
+ 				}
+ 			}
+ 			);
+ 	}
+
+ 	public editContact(id){
+        this.events.publish('user:edit', id, Date.now());
+        this.navCtrl.setRoot('EditContactPage');
+>>>>>>> master
  	}
  }

@@ -28,7 +28,11 @@ export class MyApp {
   place: string = '';
   userid:any = '0';
 
+<<<<<<< HEAD
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private getDataService: GetDataProvider, private auth: AuthServiceProvider, public events: Events, private storage : Storage, private camera: Camera) {
+=======
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private getDataService: GetDataProvider, private auth: AuthServiceProvider, public events: Events, private storage : Storage) {
+>>>>>>> master
     this.initializeApp();
 
     let info:any;
