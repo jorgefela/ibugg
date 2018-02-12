@@ -9,8 +9,13 @@
 
   <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
   <link rel="manifest" href="manifest.json">
+<<<<<<< HEAD
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/bootstrap.css">
+=======
   <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.min.css">
+>>>>>>> master
 
   <meta name="theme-color" content="#4e8ef7">
 
@@ -107,6 +112,56 @@
         }
       });
     });
+<<<<<<< HEAD
+  $(document).on('change', '#cam', function(){
+    $(document).find('.btn').hide();
+    $(document).find('.loading').show();
+
+    var formData = new FormData($('#use-cam')[0]);
+
+    $.ajax({
+      url: "http://ibugg2.vmcgraphics.com/test-ocr/_index.php",
+      type: "POST",
+      data: formData,
+      // async: false,
+      success: function (msg) {
+        console.log(msg);
+
+        $('#use-cam').fadeOut('slow');
+        setTimeout(function() {
+          $('#list-contacts').fadeIn('slow');
+        }, 600);
+
+        var $field = $(msg).find('field'),
+        bCard = [];
+        $('.form').slideUp('slow');
+
+        $field.each(function(){
+          if(bCard[$(this).attr('type')] == undefined || bCard[$(this).attr('type')] == null){
+            bCard[$(this).attr('type')] = $(this).find('value').text();
+          }else{
+            count = bCard[$(this).attr('type')].length;
+            bCard[$(this).attr('type')][count] = $(this).find('value').text();
+          }
+        });
+
+        $('#here').slideDown('slow');
+
+        $('input[name=name]').val(bCard['Name']).change();
+        $('input[name=phone]').val(bCard['Phone']).change();
+        $('input[name=email]').val(bCard['Email']).change();
+        $('textarea[name=address_1]').val(bCard['Address']).change();
+        $('input[name=org_name]').val(bCard['Company']).change();
+        $('input[name=org_position]').val(bCard['Job']).change();
+        console.log(bCard);
+      },
+      cache: false,
+      contentType: false,
+      processData: false
+    });
+  });
+=======
+>>>>>>> master
   </script>
 
 </body>

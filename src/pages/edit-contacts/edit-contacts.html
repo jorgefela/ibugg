@@ -1,0 +1,150 @@
+<!--
+  Generated template for the EditContactsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="header-app">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><img src="assets/imgs/white-logo-horz.png" alt="Ibugg " class="header-logo"></ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+	<div class="content-app-body" *ngFor="let i of editInfo">
+		<div id="list-contacts">
+			<h1><strong>Editing:</strong> {{i.name}} {{i.lname}}</h1>
+			<form action="php/functions.php" class="form-bg-soft-gray form-up-label" enctype="multipart/form-data" method="post">
+				<input type="hidden" name="process" value="edit-contact">
+				<input type="hidden" name="id" value="1">
+				<input type="hidden" name="table" value="contacts">
+				<div class="d-table w-100">
+					<div class="d-table-cell w-25 align-top change-img text-center">
+						<div class="info-img">
+							<div class="info-img-content">
+								<img src="http://ibugg2.vmcgraphics.com/images/profile/{{i.photo}}" alt="{{i.name}} {{i.lname}}" *ngIf="i.photo != ''">
+								<img src="http://ibugg2.vmcgraphics.com/images/profile/default.jpg" alt="{{i.name}} {{i.lname}}" *ngIf="i.photo == ''">
+							</div>
+						</div>
+						<input type="file" name="photo" id="change-img" class="change-img-input" accept="image/*">
+						<label for="change-img" class="btn btn-secondary btn-sm">Change Image</label>
+					</div>
+					<div class="d-table-cell w-75 align-top">
+						<div class="input-group margin-top-20">
+							<label class="input-label input-underline">
+								<input type="text" class="input no-empty" name="name" value="{{i.name}}">
+								<span class="txt-label">Name</span>
+								<span class="underline"></span>
+							</label>
+							<label class="input-label input-underline">
+								<input type="text" class="input no-empty" name="lname" value="{{i.lname}}">
+								<span class="txt-label">Last Name</span>
+								<span class="underline"></span>
+							</label>
+						</div>
+						<div class="input-group margin-top-20">
+							<label class="input-label input-underline">
+								<input type="text" class="input no-empty" name="phone" value="{{i.phone}}">
+								<span class="txt-label">Phone</span>
+								<span class="underline"></span>
+							</label>
+							<label class="input-label input-underline">
+								<input type="text" class="input no-empty" name="email" value="{{i.email}}">
+								<span class="txt-label">Email</span>
+								<span class="underline"></span>
+							</label>
+						</div>
+						<div class="input-group margin-top-20">
+							<label class="input-label input-underline">
+								<textarea name="address_1" rows="3" class="input no-empty">{{i.address_1}}</textarea>
+								<span class="txt-label">Address 01</span>
+								<span class="underline"></span>
+							</label>
+							<label class="input-label input-underline">
+								<textarea name="address_2" rows="3" class="input no-empty">{{i.address_2}}</textarea>
+								<span class="txt-label">Address 02</span>
+								<span class="underline"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="input-group margin-top-20 input-group-4">
+					<label class="input-label input-underline">
+						<input type="text" class="input no-empty" name="city" value="{{i.city}}">
+						<span class="txt-label">City</span>
+						<span class="underline"></span>
+					</label>
+					<label class="input-label input-underline">
+						<input type="text" class="input no-empty" name="country" value="{{i.country}}">
+						<span class="txt-label">Country</span>
+						<span class="underline"></span>
+					</label>
+					<label class="input-label input-underline">
+						<input type="text" class="input no-empty" name="zip_code" value="{{i.zip_code}}">
+						<span class="txt-label">Zip Code</span>
+						<span class="underline"></span>
+					</label>
+					<label class="input-label input-underline">
+						<div class="dropdown" ngbDropdown>
+							<ion-select name="tag" interface="action-sheet">
+								<ion-option value="f" selected>Female</ion-option>
+								<ion-option value="m">Male</ion-option>
+							</ion-select>
+							<!-- <button class="input input-submit bg-info text-white dropdown-toggle d-block w-100" type="button" id="dropdownMenuButton" ngbDropdownToggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">aqua</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink" ngbDropdownMenu>
+								<label class="dropdown-item "><input type="radio" name="tag" value="" class="d-none"><span class="badge badge-light">&nbsp;</span> No One</label>
+								<label class="dropdown-item "><input type="radio" name="tag" value="blue" class="d-none"><span class="badge badge-primary">&nbsp;</span> Blue</label>
+								<label class="dropdown-item "><input type="radio" name="tag" value="gray" class="d-none"><span class="badge badge-secondary">&nbsp;</span> Gray</label>
+								<label class="dropdown-item "><input type="radio" name="tag" value="green" class="d-none"><span class="badge badge-success">&nbsp;</span> Green</label>
+								<label class="dropdown-item "><input type="radio" name="tag" value="red" class="d-none"><span class="badge badge-danger">&nbsp;</span> Red</label>
+								<label class="dropdown-item "><input type="radio" name="tag" value="yellow" class="d-none"><span class="badge badge-warning">&nbsp;</span> Yellow</label>
+								<label class="dropdown-item "><input type="radio" name="tag" value="aqua" class="d-none" checked=""><span class="badge badge-info">&nbsp;</span> Aqua</label>
+								<label class="dropdown-item "><input type="radio" name="tag" value="white" class="d-none"><span class="badge badge-light">&nbsp;</span> White</label>
+								<label class="dropdown-item "><input type="radio" name="tag" value="black" class="d-none"><span class="badge badge-dark">&nbsp;</span> Black</label>
+							</div> -->
+						</div>
+					</label>
+				</div>
+				<div class="separate"></div>
+				<div class="header-section">
+					<h1>WORK INFORMATION</h1>
+				</div>
+				<div class="input-group margin-top-20">
+					<label class="input-label input-underline">
+						<input type="text" class="input" name="industry" value="">
+						<span class="txt-label">Industry</span>
+						<span class="underline"></span>
+					</label>
+					<label class="input-label input-underline">
+						<input type="text" class="input no-empty" name="org_name" value="VMC Technology">
+						<span class="txt-label">Organization Name</span>
+						<span class="underline"></span>
+					</label>
+				</div>
+				<div class="input-group margin-top-20">
+					<label class="input-label input-underline">
+						<input type="text" class="input" name="org_url" value="">
+						<span class="txt-label">Organization URL</span>
+						<span class="underline"></span>
+					</label>
+					<label class="input-label input-underline">
+						<input type="text" class="input no-empty" name="org_position" value="Web Developer">
+						<span class="txt-label">Position</span>
+						<span class="underline"></span>
+					</label>
+				</div>
+				<div class="separate"></div>
+				<div class="text-center form-footer">
+					<p class="w-75 d-inline-block">
+						<a href="php/functions.php?process=delete-contacts&amp;id=1" class="input input-submit bg-danger text-white d-inline-block w-25">DELETE CONTACT</a>
+						<button type="submit" class="input input-submit bg-success text-white d-inline-block w-25">SAVE CHANGES</button>
+					</p>
+				</div>
+			</form>
+		</div>
+	</div>
+</ion-content>
