@@ -6,10 +6,6 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { EditContactsPage } from '../edit-contacts/edit-contacts';
 import { NewContactPage } from '../new-contact/new-contact';
 
-
-import { EditContactsPage } from '../edit-contacts/edit-contacts';
-import { NewContactPage } from '../new-contact/new-contact';
-
 import { Storage } from '@ionic/storage';
 
 /**
