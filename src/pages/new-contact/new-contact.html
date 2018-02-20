@@ -18,15 +18,16 @@
 	<div class="content-app-body">
 		<div>
 			<form action="" id="use-cam">
-				<input type="file" name="image" id="cam" style="display: none;">
+				<input type="file" name="image" [value]="base64Image" *ngIf="base64Image" id="cam" style="display: none;">
 				<div class="use-cam-content">
 					<h2>Get Contact Info by Business Card</h2>
-					<button class="btn" type="button" onclick="$('#cam').click();"><i class="fa fa-camera" aria-hidden="true"></i></button>
+					<!-- <button class="btn" type="button" onclick="$('#cam').click();"><i class="fa fa-camera" aria-hidden="true"></i></button> -->
+					<button class="btn" type="button" (click)="cam()"><i class="fa fa-camera" aria-hidden="true"></i></button>
 					<button class="btn loading" type="button"><i class="fa fa-spinner" aria-hidden="true"></i></button>
 				</div>
 			</form>
 		</div>
-		<div id="list-contacts" class="new-contact" style="display: none;">
+		<div id="list-contacts" class="new-contact">
 			<h1><strong>New Contact</strong></h1>
 			<form action="php/functions.php" class="form-bg-soft-gray form-up-label" enctype="multipart/form-data" method="post">
 				<input type="hidden" name="process" value="edit-contact">

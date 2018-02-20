@@ -13,12 +13,12 @@ import { LoginPageModule } from '../pages/login/login.module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { HttpModule } from '@angular/http';
 import { GetDataProvider } from '../providers/get-data/get-data';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({

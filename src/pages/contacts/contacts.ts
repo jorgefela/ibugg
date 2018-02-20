@@ -7,6 +7,7 @@ import { EditContactsPage } from '../edit-contacts/edit-contacts';
 import { NewContactPage } from '../new-contact/new-contact';
 
 import { Storage } from '@ionic/storage';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 /**
  * Generated class for the ContactsPage page.
@@ -27,7 +28,7 @@ import { Storage } from '@ionic/storage';
  	email = '';
 
 
- 	constructor(public navCtrl: NavController, private getDataService: GetDataProvider, private auth: AuthServiceProvider, private storage : Storage, public events: Events) {
+ 	constructor(public navCtrl: NavController, private getDataService: GetDataProvider, private auth: AuthServiceProvider, private storage : Storage, public events: Events, private camera: Camera) {
  		this.auth.showLoading('Please Wait..');
 
  		let info:any;
@@ -53,7 +54,27 @@ import { Storage } from '@ionic/storage';
 				this.auth.closeLoading();
 			}
 		});
+
  	}
+
+ 	public getImage(){
+	  const options: CameraOptions = {
+	    quality: 100,
+	    destinationType: this.camera.DestinationType.DATA_URL,
+	    encodingType: this.camera.EncodingType.JPEG,
+	    mediaType: this.camera.MediaType.PICTURE
+	  }
+
+	  this.camera.getPicture(options).then((imageData) => {
+	   // imageData is either a base64 encoded string or a file URI
+	   // If it's base64:
+	   let base64Image = 'data:image/jpeg;base64,' + imageData;
+	   
+	  }, (err) => {
+	   // Handle error
+	  });
+  	}
+
 
  	getContacts(userid){
  		this.getDataService.getData('http://ibugg2.vmcgraphics.com/api/contacts/?userid='+userid+'&status=1').subscribe(
