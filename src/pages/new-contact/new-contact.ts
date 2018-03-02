@@ -115,7 +115,7 @@ export class NewContactPage {
 
 	// Copy the image to a local folder
 	private copyFileToLocalDir(namePath, currentName, newFileName) {
-		this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
+		this.file.copyFile(namePath, currentName, file.dataDirectory, newFileName).then(success => {
 			this.lastImage = newFileName;
 			this.uploadImage();
 		}, error => {
@@ -137,7 +137,7 @@ export class NewContactPage {
 		if (img === null) {
 			return '';
 		} else {
-			return cordova.file.dataDirectory + img;
+			return file.dataDirectory + img;
 		}
 	}
 
