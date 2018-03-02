@@ -55,10 +55,12 @@
         <ion-avatar item-start class="list-contacts-items">
           <img src="assets/imgs/profile/{{(c.photo != '') ? c.photo : 'default.jpg'}}">
         </ion-avatar>
-        <div class="list-contacts-items list-contacts-item-content" item-content>
-          <h1>{{c.name}} {{c.lname}}</h1>
-          <p>{{c.email}}</p>
-        </div>
+        <ion-label class="label label-md">
+          <div class="list-contacts-items list-contacts-item-content" item-content>
+            <h1>{{c.name}} {{c.lname}}</h1>
+            <p>{{c.email}}</p>
+          </div>
+        </ion-label>
         <div class="list-contacts-items list-contacts-item-functions" item-content>
           <button ion-button clear class="change-favorite" data-column="favorite" data-value="0" *ngIf="c.favorite == 1">
             <input type="hidden" name="id" value="{{c.id}}">

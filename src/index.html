@@ -109,6 +109,11 @@
       });
     });
 
+  $(document).on('change', '#img', function(){
+    var val = $(this).val();
+    console.log('get img');
+  });
+
   $(document).on('change', '#cam', function(){
     $(document).find('.btn').hide();
     $(document).find('.loading').show();

@@ -18,7 +18,10 @@ import { HttpModule } from '@angular/http';
 import { GetDataProvider } from '../providers/get-data/get-data';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
-import { Camera, CameraOptions } from '@ionic-native/camera';
+import { File } from '@ionic-native/file';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
 import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
@@ -56,7 +59,10 @@ import { IonicStorageModule } from '@ionic/storage';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GetDataProvider,
     AuthServiceProvider,
-    Camera
+    File,
+    Transfer,
+    Camera,
+    FilePath
   ]
 })
 export class AppModule {}

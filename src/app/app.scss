@@ -1187,6 +1187,7 @@
 
 #use-cam{
     display: table;
+    width: 100%;
     height: 100%;
     min-height: 500px;
 }
@@ -1201,6 +1202,8 @@
     margin-top: 20px;
     font-size: 40px;
     padding: 20px 30px;
+    background-color: #ddd;
+    color: #666;
 }
 
 #use-cam .use-cam-content .btn.loading{
