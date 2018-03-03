@@ -29,7 +29,7 @@ export class NewContactPage {
 	lastImage: string = null;
 	loading: Loading;
 
-	bCard: any = null;
+	bCard: any = [];
 	bName: string = null;
 	bPhone: string = null;
 	bEmail: string = null;
@@ -175,15 +175,20 @@ export class NewContactPage {
 			// let bCard = data['response']['businessCard']['field'];
 			let json = JSON.parse(data['response']);
 			let fields = json['businessCard']['field'];
+			let length = field.length;
 
-			this.bCard = fields;
-			this.bName = fields;
-			this.bPhone = fields;
-			this.bEmail = fields;
-			this.bWeb = fields;
-			this.bAddress = fields;
-			this.bCompany = fields;
-			this.bJob = fields;
+			for(i = 0; i < length; i++){
+				console.log(fields[i]['@attributes']['type']);
+			}
+
+			// this.bCard = fields;
+			// this.bName = fields;
+			// this.bPhone = fields;
+			// this.bEmail = fields;
+			// this.bWeb = fields;
+			// this.bAddress = fields;
+			// this.bCompany = fields;
+			// this.bJob = fields;
 		}, err => {
 			this.loading.dismissAll()
 			this.presentToast('Error while uploading file.');
