@@ -175,15 +175,24 @@ export class NewContactPage {
 			// let bCard = data['response']['businessCard']['field'];
 			let json = JSON.parse(data['response']);
 			let fields = json['businessCard']['field'];
+			let length = fields.length;
+			this.bCard = [];
 
-			this.bCard = fields;
-			this.bName = fields;
-			this.bPhone = fields;
-			this.bEmail = fields;
-			this.bWeb = fields;
-			this.bAddress = fields;
-			this.bCompany = fields;
-			this.bJob = fields;
+			for(let i = 0; i < length; i++){
+				console.log(fields[i]['@attributes']['type']);
+				if(this.bCard[fields[i]['@attributes']['type']] == undefined || this.bCard[fields[i]['@attributes']['type']] == ''){
+					this.bCard[fields[i]['@attributes']['type']] = fields[i]['value'];
+				}
+			}
+
+			// this.bCard = fields;
+			this.bName = this.bCard['Name'];
+			this.bPhone = this.bCard['Phone'];
+			this.bEmail = this.bCard['Email'];
+			this.bWeb = this.bCard['Web'];
+			this.bAddress = this.bCard['Address'];
+			this.bCompany = this.bCard['Company'];
+			this.bJob = this.bCard['Job'];
 		}, err => {
 			this.loading.dismissAll()
 			this.presentToast('Error while uploading file.');
