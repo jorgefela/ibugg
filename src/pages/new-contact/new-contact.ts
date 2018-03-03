@@ -10,6 +10,8 @@ import { Transfer, TransferObject } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 
+declare let cordova: any;
+
 /**
  * Generated class for the NewContactPage page.
  *
