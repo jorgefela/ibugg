@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ActionSheetController, ToastController, Platform, LoadingController, Loading } from 'ionic-angular';
 
-import { GetDataProvider } from '../../providers/get-data/get-data';
+// import { GetDataProvider } from '../../providers/get-data/get-data';
 
 import { ContactsPage } from '../contacts/contacts';
 
@@ -196,6 +196,7 @@ export class NewContactPage {
 		}, err => {
 			this.loading.dismissAll()
 			this.presentToast('Error while uploading file.');
+			console.log(err);
 		});
 	}
 
